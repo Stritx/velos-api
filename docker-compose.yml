@@ -1,0 +1,28 @@
+services:
+  base:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: velos
+      POSTGRES_PASSWORD: motdepasse_local_dev
+      POSTGRES_DB: velos
+    volumes:
+      - donnees_base:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U velos -d velos"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      DATABASE_URL: postgresql://velos:motdepasse_local_dev@base:5432/velos
+    depends_on:
+      base:
+        condition: service_healthy
+
+volumes:
+  donnees_base:

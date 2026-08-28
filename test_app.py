@@ -36,4 +36,4 @@ def test_stations_renvoie_le_bon_nombre_de_stations():
         assert reponse.status_code == 200
         donnees = reponse.get_json()
         assert donnees["source"] == "memoire"
-        assert len(donnees["stations"]) == 4
+        assert len(donnees["stations"]) == 999

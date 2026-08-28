@@ -15,3 +15,4 @@ un jeu de donnees de secours en memoire.
 # test protection
 # second test protection
 # second test protection
+# Pipeline CI/CD automatise avec Jenkins

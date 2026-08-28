@@ -31,6 +31,8 @@ STATIONS_SECOURS = [
     {"nom": "Universite", "quartier": "Sud", "velos_disponibles": 1, "capacite": 25},
 ]
 
+SEUIL_ALERTE = 3
+
 
 def lire_stations():
     """Retourne (stations, source). La source vaut 'postgres' ou 'memoire'."""

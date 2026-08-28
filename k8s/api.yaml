@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: api
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: stritx/velos-api:1.0
+          image: stritx/velos-api:2.0
           ports:
             - containerPort: 8000
           env:

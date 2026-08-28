@@ -36,7 +36,6 @@ pipeline {
                 withCredentials([file(credentialsId: 'kubeconfig-kind', variable: 'KUBECONFIG_FILE')]) {
                     sh '''
                         export KUBECONFIG=$KUBECONFIG_FILE
-                        kind load docker-image ${IMAGE_NAME}:${IMAGE_TAG} --name velos-api
                         sed -i "s|image: .*velos-api:.*|image: ${IMAGE_NAME}:${IMAGE_TAG}|" k8s/api.yaml
                         kubectl apply -f k8s/api.yaml
                         kubectl rollout status deployment/api --timeout=90s

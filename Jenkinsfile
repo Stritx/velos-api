@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+        pollSCM('H/2 * * * *')
+    }
+
     environment {
         IMAGE_NAME = "stritx/velos-api"
         IMAGE_TAG  = "${env.BUILD_NUMBER}"
